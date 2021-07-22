@@ -1,12 +1,11 @@
 services:
   backend:
-    build: ./backend
+    build:
+      dockerfile: ./backend
+      args:
+        NODE_ENV: 'PROD'
     environment:
-      NODE_ENV: 'DEV'
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./backend/src:/src
+      NODE_ENV: 'PROD'
     networks:
       - main
   db:

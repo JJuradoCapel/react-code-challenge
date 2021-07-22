@@ -1,5 +1,5 @@
 #! /bin/bash
-if [ ${ENV} = "PROD" ]; then
+if [ ${NODE_ENV} = "PROD" ]; then
     yarn start-prod
 else
     yarn start
