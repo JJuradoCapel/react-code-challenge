@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      ENV: 'DEV'
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/src:/src
+    networks:
+      - main
+  db:
+    image: mongo
+    networks:
+      main:
+        aliases:
+          - db
+networks:
+  main:
