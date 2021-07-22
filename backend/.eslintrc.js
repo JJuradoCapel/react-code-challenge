@@ -20,4 +20,7 @@ module.exports = {
     project: './tsconfig.json',
   },
   ignorePatterns: ['**/*.js'],
+  rules: {
+    "max-len": "off",
+  }
 };
