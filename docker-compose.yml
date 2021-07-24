@@ -2,13 +2,27 @@ services:
   backend:
     build: ./backend
     environment:
-      NODE_ENV: 'DEV'
+      ENV: 'DEV'
     ports:
       - "8080:8080"
     volumes:
       - ./backend/src:/src
     networks:
       - main
+    depends_on:
+      - db
+  frontend:
+    build: ./frontend
+    environment:
+      ENV: 'DEV'
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/src
+    networks:
+      - frontend
+    depends_on:
+      - backend
   db:
     image: mongo
     networks:
@@ -17,3 +31,4 @@ services:
           - db
 networks:
   main:
+  frontend:

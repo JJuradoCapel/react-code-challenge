@@ -1,18 +1,33 @@
 services:
-  backend:
+  backend-prod:
     build:
-      dockerfile: ./backend
+      context: ./backend
       args:
-        NODE_ENV: 'PROD'
+        ENV: 'PROD'
     environment:
       NODE_ENV: 'PROD'
     networks:
-      - main
-  db:
+      - backend-prod
+      - frontend-prod
+    depends_on:
+      - db-prod
+  frontend-prod:
+    build:
+      context: ./frontend
+      args:
+        ENV: 'PROD'
+    ports:
+      - "80:80"
+    environment:
+      NODE_ENV: 'PROD'
+    networks:
+      - frontend-prod
+    depends_on:
+      - backend-prod
+  db-prod:
     image: mongo
     networks:
-      main:
-        aliases:
-          - db
+      - backend-prod
 networks:
-  main:
+  backend-prod:
+  frontend-prod:
