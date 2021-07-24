@@ -1,0 +1,19 @@
+.product-card {
+    max-width: 250px;
+    min-width: 200px;
+    margin: 15px;
+}
+
+.product-card .media {
+    height: 200px;
+}
+
+.product-card h2 {
+    text-align: left;
+}
+
+.product-card h3 {
+    text-align: left;
+    margin-bottom: 0;
+    font-style: italic;
+}

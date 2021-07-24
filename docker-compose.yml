@@ -8,7 +8,8 @@ services:
     volumes:
       - ./backend/src:/src
     networks:
-      - main
+      - backend
+      - frontend
     depends_on:
       - db
   frontend:
@@ -26,9 +27,7 @@ services:
   db:
     image: mongo
     networks:
-      main:
-        aliases:
-          - db
+      - backend
 networks:
-  main:
+  backend:
   frontend:
