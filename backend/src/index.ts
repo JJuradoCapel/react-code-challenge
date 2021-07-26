@@ -1,13 +1,12 @@
-import mongoose from 'mongoose';
-
 import app from './app';
+import { initializeDB } from './services/db';
 
 const port = 8080; // default port to listen
 (async () => {
   try {
-    await mongoose.connect('mongodb://db');
+    await initializeDB();
     app.listen(port, () => {
-      console.log(`server started at http://localhost:${port}`);
+      console.log(`Server started at http://localhost:${port}`);
     });
   } catch (e) {
     console.log('Error initializing the server', e);

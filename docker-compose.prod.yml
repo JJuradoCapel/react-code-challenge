@@ -6,6 +6,7 @@ services:
         ENV: 'PROD'
     environment:
       NODE_ENV: 'PROD'
+      DB_URI: 'db-prod'
     networks:
       - backend-prod
       - frontend-prod
@@ -28,7 +29,8 @@ services:
     image: mongo
     networks:
       - backend-prod
-    volumes: ./data:/data/db
+    volumes:
+      - ./data:/data/db
 networks:
   backend-prod:
   frontend-prod:

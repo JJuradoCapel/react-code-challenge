@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 export const getPhones = async (callback: (res: AxiosResponse<any>) => any) => {
   try {
