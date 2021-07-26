@@ -28,6 +28,7 @@ services:
     image: mongo
     networks:
       - backend
+    volumes: ./data:/data/db
 networks:
   backend:
   frontend:
