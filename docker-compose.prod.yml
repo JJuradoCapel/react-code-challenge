@@ -19,10 +19,12 @@ services:
       context: ./frontend
       args:
         ENV: 'PROD'
+
     ports:
       - "80:80"
     environment:
       NODE_ENV: 'PROD'
+      REACT_APP_BACKEND_URL: 'http://localhost:8080'
     networks:
       - frontend-prod
     depends_on:
