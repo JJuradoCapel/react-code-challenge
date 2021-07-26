@@ -10,6 +10,8 @@ services:
     networks:
       - backend-prod
       - frontend-prod
+    volumes:
+      - ./backend/images:/images
     depends_on:
       - db-prod
   frontend-prod:

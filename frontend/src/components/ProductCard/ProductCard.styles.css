@@ -6,6 +6,7 @@
 
 .product-card .media {
     height: 200px;
+    object-fit: contain;
 }
 
 .product-card h2 {

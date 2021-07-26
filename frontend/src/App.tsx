@@ -3,16 +3,15 @@ import './styles/App.css';
 import {AppBar, IconButton, Toolbar} from '@material-ui/core';
 import ProductCard from './components/ProductCard';
 import {useEffect, useState} from 'react';
-import {getPhones} from './adapters';
+import {getPhones, PhoneInfo} from './adapters';
 
 function App() {
-  const [phones, setPhones] = useState<any[]>([]);
+  const [phones, setPhones] = useState<PhoneInfo[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     getPhones((res) => {
       const { data } = res;
-      console.log(data)
-      setPhones(Array(50).fill(data[0]))
+      setPhones(data)
     })
   },[]);
 
