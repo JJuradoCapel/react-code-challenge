@@ -1,0 +1,23 @@
+.modal-container {
+    margin: 2em;
+    display: flex;
+}
+
+.full-screen {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.modal-container .image {
+    width: 50%;
+    object-fit: contain;
+}
+
+.modal-container h4 {
+    margin-bottom: 0;
+}
+
+.modal-container .data-container {
+
+}
