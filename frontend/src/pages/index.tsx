@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import { AppBar, IconButton, LinearProgress, Toolbar } from '@material-ui/core';
 
 import '../styles/App.css';
@@ -6,18 +6,19 @@ import '../styles/App.css';
 import ProductCard from '../components/ProductCard';
 import { getPhones, PhoneInfo } from '../adapters';
 
-function PhonePage() {
+const PhonePage: React.FC = () => {
   const [phones, setPhones] = useState<PhoneInfo[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     setLoading(true);
     getPhones((res) => {
       const { data } = res;
       setPhones(data);
       setLoading(false);
     })
-  },[]);
+  }, [])
+  useEffect(fetchData,[fetchData]);
 
   return (
     <>
@@ -32,7 +33,7 @@ function PhonePage() {
       </AppBar>
       {loading && <LinearProgress />}
       <div className="product-grid">
-        {phones.map((item) => <ProductCard key={item._id} data={item} />)}
+        {phones.map((item) => <ProductCard key={item._id} data={item} fetchData={fetchData} />)}
       </div>
     </>
   );

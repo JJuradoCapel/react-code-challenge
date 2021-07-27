@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import './ProductCard.styles.css';
 
-import {Card, CardActionArea, CardContent, CardMedia} from '@material-ui/core';
+import { Card, CardActionArea, CardContent, CardMedia } from '@material-ui/core';
 import { PhoneInfo } from '../../adapters';
 import { backendURL } from '../../config';
 import ProductModal from '../ProductModal';
 
 interface ProductCardProps {
   data: PhoneInfo;
+  fetchData: () => void;
 }
-const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ data, fetchData }) => {
   const [open, setOpen] = useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -24,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
         </CardContent>
       </CardActionArea>
     </Card>
-    <ProductModal data={data} open={open} handleClose={handleClose} />
+    <ProductModal data={data} open={open} handleClose={handleClose} fetchData={fetchData} />
   </>
 };
 

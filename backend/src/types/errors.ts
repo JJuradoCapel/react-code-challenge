@@ -2,6 +2,7 @@ export enum HTTPErrors {
   NOT_FOUND = 'NOT_FOUND',
   INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR',
   METHOD_NOT_ALLOWED = 'METHOD_NOT_ALLOWED',
+  BAD_INPUT = 'BAD_INPUT',
 }
 
 export type ErrorMessage = {
@@ -25,5 +26,10 @@ export const errorMessages: Record<HTTPErrors, ErrorMessage> = {
     title: 'Method not allowed',
     code: 405,
     message: 'The method used in the request is not supported in this route',
+  },
+  [HTTPErrors.BAD_INPUT]: {
+    title: 'Bad input',
+    code: 401,
+    message: 'Wrong data input.',
   },
 };

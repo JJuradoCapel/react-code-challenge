@@ -6,21 +6,32 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
+  DialogTitle, Fab,
   useMediaQuery,
   useTheme
 } from '@material-ui/core';
-import { PhoneInfo } from '../../adapters';
+import {deletePhone, PhoneInfo} from '../../adapters';
 import { backendURL } from '../../config';
+import RemoveIcon from '@material-ui/icons/Delete';
 
 interface ProductModalProps {
   data: PhoneInfo;
   open: boolean
   handleClose: () => void;
+  fetchData: () => void;
 }
-const ProductModal: React.FC<ProductModalProps> = ({ data, open, handleClose }) => {
+const ProductModal: React.FC<ProductModalProps> = ({ data, open, handleClose, fetchData }) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const handleRemove = async () => {
+    // Add a delay to delete phone to ge the updated data
+    setTimeout(() => {
+      handleClose();
+      fetchData();
+    }, 500);
+    deletePhone(data._id);
+  };
 
   return <Dialog
     fullScreen={fullScreen}
@@ -29,6 +40,11 @@ const ProductModal: React.FC<ProductModalProps> = ({ data, open, handleClose }) 
   >
     <DialogTitle>{data.name}</DialogTitle>
     <DialogContent className={fullScreen ? 'modal-container full-screen' : 'modal-container'}>
+      <div className="floating-buttons">
+        <Fab color="secondary" size="small" onClick={handleRemove}>
+          <RemoveIcon />
+        </Fab>
+      </div>
       <div className="data-container">
         <h4>Manufacturer:</h4>
         {data.manufacturer}

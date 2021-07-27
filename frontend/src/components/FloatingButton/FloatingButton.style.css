@@ -1,0 +1,11 @@
+.floating-button-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    right: 2em;
+    bottom: 2em;
+}
+
+.floating-button-container .close-button {
+    margin-top: 2em;
+}

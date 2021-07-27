@@ -22,3 +22,19 @@ export const getPhones = async (callback: (res: AxiosResponse<PhoneInfo[]>) => a
     console.error(e);
   }
 };
+
+export const postPhone = async (data: FormData) => {
+  try {
+    return axios.post<PhoneInfo[]>(`${backendURL}/phones`, data);
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+export const deletePhone = async (id: string) => {
+  try {
+    return axios.delete<PhoneInfo[]>(`${backendURL}/phones/${id}`);
+  } catch (e) {
+    console.error(e);
+  }
+};

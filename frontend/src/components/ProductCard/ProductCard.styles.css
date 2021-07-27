@@ -1,4 +1,6 @@
 .product-card {
+    position: relative;
+    overflow: visible !important;
     max-width: 250px;
     min-width: 150px;
     width: 250em;

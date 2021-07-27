@@ -18,6 +18,12 @@
     margin-bottom: 0;
 }
 
-.modal-container .data-container {
+.modal-container .floating-buttons {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
 
+.modal-container .floating-buttons .padding {
+    margin-left: 1em;
 }
