@@ -22,7 +22,7 @@ interface ProductModalProps {
 }
 const ProductModal: React.FC<ProductModalProps> = ({ data, open, handleClose, fetchData }) => {
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleRemove = async () => {
     // Add a delay to delete phone to ge the updated data
@@ -39,29 +39,31 @@ const ProductModal: React.FC<ProductModalProps> = ({ data, open, handleClose, fe
     onClose={handleClose}
   >
     <DialogTitle>{data.name}</DialogTitle>
-    <DialogContent className={fullScreen ? 'modal-container full-screen' : 'modal-container'}>
-      <div className="floating-buttons">
-        <Fab color="secondary" size="small" onClick={handleRemove}>
-          <RemoveIcon />
-        </Fab>
+    <DialogContent>
+      <div className={fullScreen ? 'modal-container full-screen' : 'modal-container'}>
+        <div className="floating-buttons">
+          <Fab color="secondary" size="small" onClick={handleRemove}>
+            <RemoveIcon />
+          </Fab>
+        </div>
+        <div className="data-container">
+          <h4>Manufacturer:</h4>
+          {data.manufacturer}
+          <h4>Processor:</h4>
+          {data.processor}
+          <h4>Screen:</h4>
+          {data.screen}
+          <h4>RAM:</h4>
+          {data.ram}
+          <h4>Color:</h4>
+          {data.color}
+          <h4>Price:</h4>
+          {data.price}€
+          <h4>Description:</h4>
+          {data.description}
+        </div>
+        <img className="image" src={`${backendURL}/images/${data.imageFileName}`} />
       </div>
-      <div className="data-container">
-        <h4>Manufacturer:</h4>
-        {data.manufacturer}
-        <h4>Processor:</h4>
-        {data.processor}
-        <h4>Screen:</h4>
-        {data.screen}
-        <h4>RAM:</h4>
-        {data.ram}
-        <h4>Color:</h4>
-        {data.color}
-        <h4>Price:</h4>
-        {data.price}€
-        <h4>Description:</h4>
-        {data.description}
-      </div>
-      <img className="image" src={`${backendURL}/images/${data.imageFileName}`} />
     </DialogContent>
     <DialogActions>
       <Button autoFocus onClick={handleClose} color="primary">

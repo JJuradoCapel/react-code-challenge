@@ -48,7 +48,7 @@ interface ProductModalProps {
 }
 const AddModal: React.FC<ProductModalProps> = ({ open, handleClose }) => {
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const [state, dispatch] = useReducer(reducer, initialState);
   const [file, setFile] = useState<File>();
   const [loading, setLoading] = useState(false);
