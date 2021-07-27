@@ -53,5 +53,9 @@
     "app/**/*.{js,jsx,ts,tsx}": [
       "eslint"
     ]
+  },
+  "devDependencies": {
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1"
   }
 }
